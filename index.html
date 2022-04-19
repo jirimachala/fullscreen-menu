@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #303338;
+        }
+
+        a {
+            margin: 0;
+            text-decoration: none;
+            pointer-events: auto;
+            white-space: nowrap;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        li {
+            pointer-events: none;
+        }
+
+        li:hover:before {
+            color: #1eae90;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .menu-container {
+            padding: 200px 20px 10px;
+        }
+
+        .menu-parent {
+            counter-increment: section;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-parent:before {
+            content: "0" counter(section);
+            padding-right: 1em;
+            color: white;
+            font-weight: bold;
+        }
+
+        .menu-parent > a {
+            font-size: 64px;
+            line-height: 79px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .submenu-open > a, .menu-parent.submenu-open:before {
+            color: #1eae90;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            row-gap: 20px;
+            width: fit-content;
+            position: relative;
+            padding-right: 80px;
+        }
+
+        .submenu-container {
+            display: block;
+            opacity: 0;
+            position: absolute;
+            width: fit-content;
+            top: 0;
+            right: 0;
+            transform: translateX(100%);
+            padding: 0 60px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .submenu-container a {
+            pointer-events: none;
+        }
+
+        .submenu-open > .submenu-container {
+            opacity: 1;
+        }
+
+        .menu-parent.submenu-open > .submenu-container > ul > li > a {
+            pointer-events: auto;
+        }
+
+        .menu-parent.submenu-open .submenu-container .submenu-open .submenu-container a {
+            pointer-events: auto;
+        }
+
+        .submenu-container a {
+            font-size: 27px;
+            line-height: 42px;
+        }
+
+        .sub-menu:before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: #1d9e7d;
+        }
+
+        a:hover {
+            color: #1eae90;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-main-menu-container">
+            <ul id="main-menu" class="menu">
+                <li class="menu-parent menu-item-has-children">
+                    <a href="#">About</a>
+                    <div class="submenu-container">
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Meet The Principal</a>
+                            </li>
+                            <li>
+                                <a href="#">Meet Our Team</a>
+                            </li>
+                            <li>
+                                <a href="#">School Council</a>
+                            </li>
+                            <li>
+                                <a href="#">Our Charter</a>
+                            </li>
+                            <li>
+                                <a href="#">Policies & Documents</a>
+                            </li>
+                            <li>
+                                <a href="#">Our Facilities</a>
+                            </li>
+                            <li>
+                                <a href="#">Updates</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu-parent menu-item-has-children">
+                    <a href="#">Learning at ABHS</a>
+                    <div class="submenu-container">
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Educational Vision</a>
+                            </li>
+                            <li>
+                                <a href="#">Health & STEM Pathways</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Learning Areas</a>
+                                <div class="submenu-container">
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">STEM</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Global Perspectives</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">The Arts</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Lifestyle Choices</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Middle Years</a>
+                                <div class="submenu-container">
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">Studio Program</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Career Development</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Senior Yearss</a>
+                                <div class="submenu-container">
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="#">Careers</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Vocational Education &<br>Training</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Personal Learning Plan</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Research Project</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu-parent menu-item-has-children">
+                    <a href="#">Student Life</a>
+                    <div class="submenu-container">
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">School Day</a>
+                            </li>
+                            <li>
+                                <a href="#">Connect Groups</a>
+                            </li>
+                            <li>
+                                <a href="#">Student Leadership</a>
+                            </li>
+                            <li>
+                                <a href="#">Engagement & Wellbeing</a>
+                            </li>
+                            <li>
+                                <a href="#">Student Achievement Teams</a>
+                            </li>
+                            <li>
+                                <a href="#">1:1 Laptop Program</a>
+                            </li>
+                            <li>
+                                <a href="#">Precinct Connection</a>
+                            </li>
+                            <li>
+                                <a href="#">Café B</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu-parent menu-item-has-children">
+                    <a href="#">Enrolment</a>
+                    <div class="submenu-container">
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">School Zone</a>
+                            </li>
+                            <li>
+                                <a href="#">Enrolling at ABHS</a>
+                            </li>
+                            <li>
+                                <a href="#">Selective Entry</a>
+                            </li>
+                            <li>
+                                <a href="#">School Transition</a>
+                            </li>
+                            <li>
+                                <a href="#">Materials & Services Charge</a>
+                            </li>
+                            <li>
+                                <a href="#">Uniform</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu-parent menu-item-has-children">
+                    <a href="#">Connect</a>
+                    <div class="submenu-container">
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="#">Partnership Office</a>
+                            </li>
+                            <li>
+                                <a href="#">Employment</a>
+                            </li>
+                            <li>
+                                <a href="#">News</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+<script>
+let parent_li_elements = document.querySelectorAll(".menu-parent");
+let sub_li_elements = document.querySelectorAll(".menu-parent > .submenu-container > .sub-menu > li");
+let a_elements = document.querySelectorAll(".menu-parent > a, .menu-parent > .submenu-container > .sub-menu > li > a ");
+
+a_elements.forEach( a_element => a_element.addEventListener('mouseenter', event => {
+
+    if ( a_element.parentNode.parentNode.classList.contains('menu') ) {
+
+        parent_li_elements.forEach( parent_li_element => {
+
+
+            parent_li_element.classList.remove('submenu-open');
+
+
+        });
+
+
+    } else if ( a_element.parentNode.parentNode.classList.contains('sub-menu') ) {
+
+        sub_li_elements.forEach( sub_li_element => {
+
+
+            sub_li_element.classList.remove('submenu-open');
+
+
+        });
+
+    }
+
+    if ( a_element.parentNode.classList.contains('menu-item-has-children') ) {
+
+        a_element.parentNode.classList.add('submenu-open');
+
+    }
+    
+
+}));
+</script>
+</body>
+</html>
